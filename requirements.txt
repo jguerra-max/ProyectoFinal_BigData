@@ -1,8 +1,0 @@
-pandas
-numpy
-pyspark==4.0.1
-matplotlib
-seaborn
-plotly
-streamlit
-nbformat
