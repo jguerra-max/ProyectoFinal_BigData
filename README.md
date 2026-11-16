@@ -38,9 +38,10 @@ Se utiliza el
 un conjunto de datos públicos y reales publicado en Kaggle.
 
 El repositorio incluye `data/olist_analitico_limpio.csv`, una tabla depurada con
-una fila por pedido, utilizada directamente por el dashboard. Para ejecutar
-todas las etapas del notebook, incluyendo la auditoría y los joins originales,
-también se deben descargar las tablas fuente de Kaggle.
+una fila por pedido, utilizada directamente por el dashboard. También incluye
+las nueve tablas fuente en `data/raw`, por lo que el notebook puede ejecutarse
+completo después de clonar el repositorio sin modificar rutas ni descargar
+archivos adicionales.
 
 ## 3. Componentes del proyecto
 
@@ -62,25 +63,23 @@ ProyectoFinal_BigData/
 |-- requirements.txt
 |-- README.md
 |-- .gitignore
-`-- data/
-    `-- olist_analitico_limpio.csv
-```
-
-Cuando se descarguen las tablas originales de Kaggle, deben quedar en una
-carpeta adicional llamada `archive`:
-
-```text
-ProyectoFinal_BigData/
-`-- archive/
-    |-- olist_customers_dataset.csv
-    |-- olist_geolocation_dataset.csv
-    |-- olist_order_items_dataset.csv
-    |-- olist_order_payments_dataset.csv
-    |-- olist_order_reviews_dataset.csv
-    |-- olist_orders_dataset.csv
-    |-- olist_products_dataset.csv
-    |-- olist_sellers_dataset.csv
-    `-- product_category_name_translation.csv
+|-- data/
+|   |-- olist_analitico_limpio.csv
+|   `-- raw/
+|       |-- olist_customers_dataset.csv
+|       |-- olist_geolocation_dataset.csv
+|       |-- olist_order_items_dataset.csv
+|       |-- olist_order_payments_dataset.csv
+|       |-- olist_order_reviews_dataset.csv
+|       |-- olist_orders_dataset.csv
+|       |-- olist_products_dataset.csv
+|       |-- olist_sellers_dataset.csv
+|       `-- product_category_name_translation.csv
+`-- tools/
+    `-- hadoop/
+        `-- bin/
+            |-- hadoop.dll
+            `-- winutils.exe
 ```
 
 ## 5. Requisitos previos
@@ -129,16 +128,18 @@ python -m pip install -r requirements.txt
 La instalación incluye Pandas, NumPy, Matplotlib, Seaborn, Plotly, PySpark,
 Jupyter y Streamlit.
 
-### Paso 4. Preparar el dataset para el notebook
+### Paso 4. Verificar el dataset incluido
 
-1. Descargar el dataset desde
-   [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
-2. Descomprimir los archivos.
-3. Crear la carpeta `archive` en la raíz del repositorio.
-4. Copiar dentro de `archive` los nueve archivos CSV originales.
+No es necesario descargar archivos adicionales. Antes de ejecutar, confirmar
+que existan:
 
-El dashboard no necesita este paso porque utiliza directamente el archivo
-depurado incluido en `data/`.
+```text
+data/olist_analitico_limpio.csv
+data/raw/olist_orders_dataset.csv
+```
+
+El notebook localiza automáticamente la raíz del repositorio y utiliza
+`data/raw`. El dashboard utiliza `data/olist_analitico_limpio.csv`.
 
 ### Paso 5. Registrar y seleccionar el kernel
 
@@ -226,10 +227,11 @@ También puede comprobarse la instalación con:
 python -m pip install -r requirements.txt
 ```
 
-### No se encuentra la carpeta `archive`
+### No se encuentran las tablas Olist
 
-Verificar que la carpeta se encuentre junto a `notebook.ipynb` y que contenga
-los nueve archivos CSV con sus nombres originales.
+Verificar que `data/raw` exista dentro de la carpeta clonada y contenga los
+nueve archivos CSV. No es necesario editar `DATA_DIR` ni escribir una ruta
+absoluta del computador.
 
 ### PySpark no inicia
 
