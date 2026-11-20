@@ -75,6 +75,10 @@ ProyectoFinal_BigData/
 |       |-- olist_products_dataset.csv
 |       |-- olist_sellers_dataset.csv
 |       `-- product_category_name_translation.csv
+|-- docs/
+|   `-- img/
+|       |-- dashboard_vista_general_kpis.jpg
+|       `-- dashboard_graficos_logisticos_ventas.jpg
 `-- tools/
     `-- hadoop/
         `-- bin/
@@ -206,7 +210,21 @@ El dashboard permite filtrar por:
 Los KPIs y los seis gráficos se recalculan automáticamente al cambiar los
 filtros.
 
-### Paso 8. Detener Streamlit
+### Paso 8. Evidencias del dashboard interactivo
+
+A continuación se presentan las evidencias del funcionamiento del dashboard desarrollado con Streamlit:
+
+#### 1. Panel general, KPIs principales y nivel de servicio
+Vista superior con los indicadores agregados de pedidos (99,441), ingresos totales (R$ 16.01 M), porcentaje de entregas tardías (8.19%), calificación promedio (4.09 / 5), y los gráficos de anillos de cumplimiento de entregas y distribución de satisfacción:
+
+![Vista general del dashboard y KPIs](docs/img/dashboard_vista_general_kpis.jpg)
+
+#### 2. Desempeño logístico, comercial y riesgo de pago
+Vista inferior con el ranking de los 10 estados con mayor retraso, el top 10 de categorías con mayores ingresos, la dispersión entre tiempos de entrega y calificación del cliente, y la comparativa entre volumen monetario y tasa de pedidos no entregados por medio de pago:
+
+![Análisis logístico, comercial y de medios de pago](docs/img/dashboard_graficos_logisticos_ventas.jpg)
+
+### Paso 9. Detener Streamlit
 
 Regresar a la terminal donde se está ejecutando Streamlit y pulsar:
 
